@@ -15,7 +15,7 @@ public class Main {
         ledSim.setAll(Color.CYAN);
 
         // Set a multiple LEDs to different colors
-        ledSim.setRange(Color.ORANGE, 20, 40);;
+        ledSim.setRange(Color.ORANGE, 20, 40);
 
         // Set one LED to red
         ledSim.setLed(Color.RED, 5);
