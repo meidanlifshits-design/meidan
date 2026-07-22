@@ -1,24 +1,28 @@
 package ledsystem;
 
-import java.awt.Color;
+import ledsystem.ledssim.FlashAnimation;
 import ledsystem.ledssim.LedController;
-import ledsystem.ledssim.SolidAnimation;
+import ledsystem.utils.StopWatch;
 
 public class Main {
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
+        StopWatch runtime = new StopWatch();
+        runtime.start();
+
+        StopWatch loopTimer = new StopWatch();
+        loopTimer.start();
 
         // Initialize the LED controller with a row layout strip
         LedController controller = new LedController(100);
-        controller.setAll(Color.CYAN);
-        controller.setRange(Color.ORANGE, 20, 40);
-        controller.setLed(Color.RED, 5);
 
-        // Add a solid animation and play it
-        controller.addAnimation(new SolidAnimation(Color.MAGENTA));
-        controller.play();
+        // Add a flash animation that toggles blue/magenta every 2 seconds.
+        controller.addAnimation(new FlashAnimation());
 
-        long totalRuntime = System.currentTimeMillis() - startTime;
-        System.out.println("Program ended. Total runtime: " + totalRuntime + " ms");
+        // Play the animation continuously so timed effects can update.
+        while (loopTimer.get() < 10.0) {
+            controller.play();
+        }
+
+        System.out.println("Program ended. Total runtime: " + runtime.get() + " s");
     }
 }
