@@ -22,7 +22,7 @@ public class StopWatch {
      * This return the current time. If you don't call the `start` method you will get an error.
      */
     public double get() {
-        if (startTime.isNaN()) {
+        if (startTime == null || startTime.isNaN()) {
             throw new RuntimeException("HELPPPPP! Please initiate stopwatchh!");
         }
         return getTime() - this.startTime;

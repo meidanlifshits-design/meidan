@@ -1,7 +1,9 @@
 package ledsystem;
 
+import ledsystem.ledssim.Animation;
 import ledsystem.ledssim.FlashAnimation;
 import ledsystem.ledssim.LedController;
+import ledsystem.ledssim.TimedAnimation;
 import ledsystem.utils.StopWatch;
 
 public class Main {
@@ -15,9 +17,10 @@ public class Main {
         // Initialize the LED controller with a row layout strip
         LedController controller = new LedController(100);
 
-        // Add a flash animation that toggles blue/magenta every 2 seconds.
-        controller.addAnimation(new FlashAnimation());
-
+        // Add a flash animation that toggles blue/magenta every 2 seconds, limited to 4.5 seconds.
+        Animation flash = new FlashAnimation();
+        TimedAnimation timedFlash = new TimedAnimation(flash, 10);
+        controller.addAnimation(timedFlash);
         // Play the animation continuously so timed effects can update.
         while (loopTimer.get() < 10.0) {
             controller.play();
