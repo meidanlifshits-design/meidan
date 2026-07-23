@@ -1,5 +1,5 @@
 package ledsystem.ledssim;
 
 public interface Animation {
-    void apply(LedStrip Strip);
+    void apply(LedStrip strip);
 }
