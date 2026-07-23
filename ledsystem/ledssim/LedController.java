@@ -8,20 +8,40 @@ import ledsystem.animations.Animation;
 
 public class LedController {
     private final LedStrip strip;
-    private final List<Animation> animations;
+
+    private static class AnimationEntry {
+        final Animation animation;
+        final double duration;
+
+        AnimationEntry(Animation animation, double duration) {
+            this.animation = animation;
+            this.duration = duration;
+        }
+    }
+
+    private final List<AnimationEntry> animations;
 
     public LedController(int stripLength) {
         this.strip = LedSim.createRows(stripLength);
         this.animations = new ArrayList<>();
     }
 
+    public void addAnimation(Animation animation, double duration) {
+        animations.add(new AnimationEntry(animation, duration));
+    }
+
     public void addAnimation(Animation animation) {
-        animations.add(animation);
+        addAnimation(animation, 1.0); // 1-second default
     }
 
     public void play() {
-        for (Animation animation : animations) {
-            animation.apply(strip);
+        for (AnimationEntry entry : animations) {
+            ledsystem.utils.StopWatch sw = new ledsystem.utils.StopWatch();
+            sw.start();
+            while (sw.get() < entry.duration) {
+                entry.animation.apply(strip);
+                strip.apply();
+            }
         }
         
     }
