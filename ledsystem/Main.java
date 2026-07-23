@@ -1,8 +1,6 @@
 package ledsystem;
 
-import java.awt.Color;
-
-import ledsystem.ledssim.BlinkingAnimation;
+import ledsystem.ledssim.GeneralAngelsAnimation;
 import ledsystem.ledssim.LedController;
 
 public class Main {
@@ -11,7 +9,7 @@ public class Main {
 
         LedController controller = new LedController(100);
 
-        controller.addAnimation(new BlinkingAnimation(Color.MAGENTA), 5.0);
+        controller.addAnimation(new GeneralAngelsAnimation(), 10.0);
 
         controller.play();
 
