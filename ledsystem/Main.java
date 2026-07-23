@@ -2,19 +2,17 @@ package ledsystem;
 
 import java.awt.Color;
 
+import ledsystem.ledssim.BlinkingAnimation;
 import ledsystem.ledssim.LedController;
-import ledsystem.ledssim.SolidAnimation;
 
 public class Main {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
 
-        // Initialize the LED controller with a row layout strip
         LedController controller = new LedController(100);
 
-        // Add an animation to the controller
-        controller.addAnimation(new SolidAnimation(Color.MAGENTA));
-        // Play the animation
+        controller.addAnimation(new BlinkingAnimation(Color.MAGENTA), 5.0);
+
         controller.play();
 
         long totalRuntime = System.currentTimeMillis() - startTime;
