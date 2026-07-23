@@ -13,4 +13,4 @@ public class SolidAnimation implements Animation {
     public void apply(LedStrip strip) {
         strip.setAll(color);
     }
-}
+}

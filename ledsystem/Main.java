@@ -23,8 +23,9 @@ public class Main {
         ledSim.setLed(Color.RED, 5);
 
         // Apply the changes to the simulation
-        anim.apply(ledSim);
+        anim.apply(ledSim);  
         ledSim.apply();
+
 
         long totalRuntime = System.currentTimeMillis() - startTime;
         System.out.println("Program ended. Total runtime: " + totalRuntime + " ms");
