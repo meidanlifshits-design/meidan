@@ -3,13 +3,14 @@ package ledsystem.utils;
 import java.time.Instant;
 
 public class StopWatch {
-    
+
     private Double startTime;
 
     /*
      * This is the constructor. Use it to construct the Stopwatch.
      */
-    public StopWatch() {}
+    public StopWatch() {
+    }
 
     /*
      * This starts the stopwatch. You can reuse it to restart the stopwatch.
@@ -19,7 +20,8 @@ public class StopWatch {
     }
 
     /*
-     * This return the current time. If you don't call the `start` method you will get an error.
+     * This return the current time. If you don't call the `start` method you will
+     * get an error.
      */
     public double get() {
         if (startTime.isNaN()) {

@@ -29,7 +29,7 @@ public class LedController {
     }
 
     public void addAnimation(Animation animation) {
-        addAnimation(animation, 1.0); // 1-second default
+        addAnimation(animation, 1.0);
     }
 
     public void play() {
