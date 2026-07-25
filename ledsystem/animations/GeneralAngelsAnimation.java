@@ -1,6 +1,8 @@
-package ledsystem.ledssim;
+package ledsystem.animations;
 
 import java.awt.Color;
+
+import ledsystem.ledssim.LedStrip;
 
 public class GeneralAngelsAnimation implements Animation {
 

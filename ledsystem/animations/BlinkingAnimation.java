@@ -1,6 +1,8 @@
-package ledsystem.ledssim;
+package ledsystem.animations;
 
 import java.awt.Color;
+
+import ledsystem.ledssim.LedStrip;
 import ledsystem.utils.StopWatch;
 
 public class BlinkingAnimation implements Animation {
