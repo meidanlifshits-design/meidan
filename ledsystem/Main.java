@@ -14,7 +14,7 @@ public class Main {
         LedController controller = new LedController(100);
 
         // Add an animation to the controller
-        controller.addAnimation(new SolidAnimation(Color.BLUE));
+        controller.addAnimation(new BlinkingAnimation(Color.BLUE));
         // Play the animation
         controller.play();
 
