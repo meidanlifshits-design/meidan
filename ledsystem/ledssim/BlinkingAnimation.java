@@ -10,6 +10,9 @@ public class BlinkingAnimation implements Animation {
     public BlinkingAnimation(Color activeColor) {
         this.activeColor = activeColor;
         this.stopWatch = new StopWatch();
+        if (activeColor == null) {
+            throw new IllegalStateException("color is empty");
+        }
     }
     
     private boolean started = false;

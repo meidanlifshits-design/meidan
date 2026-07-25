@@ -1,57 +1,34 @@
 package ledsystem.ledssim;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import ledsystem.animations.Animation;
 
 public class LedController {
     private final LedStrip strip;
+    
 
-    private static class AnimationEntry {
-        final Animation animation;
-        final double duration;
 
-        AnimationEntry(Animation animation, double duration) {
-            this.animation = animation;
-            this.duration = duration;
-        }
-    }
-
-    private final List<AnimationEntry> animations;
+    private final List<Animation> animations;
 
     public LedController(int stripLength) {
         this.strip = LedSim.createRows(stripLength);
         this.animations = new ArrayList<>();
     }
 
-    public void addAnimation(Animation animation, double duration) {
-        animations.add(new AnimationEntry(animation, duration));
-    }
-
     public void addAnimation(Animation animation) {
-        addAnimation(animation, 1.0); // 1-second default
-    }
-
-    public void play() {
-        for (AnimationEntry entry : animations) {
-            ledsystem.utils.StopWatch sw = new ledsystem.utils.StopWatch();
-            sw.start();
-            while (sw.get() < entry.duration) {
-                entry.animation.apply(strip);
-                strip.apply();
-            }
+        if (animation!=null){
+            animations.add(animation);
+        }
+        else{
+            throw new IllegalStateException("you have to put an animation to add");
         }
     }
 
-    public void setAll(Color color) {
-        strip.setAll(color);
-    }
-
-    public void setRange(Color color, int start, int end) {
-        strip.setRange(color, start, end);
-    }
-
-    public void setLed(Color color, int index) {
-        strip.setLed(color, index);
+    public void play() {
+        for (Animation animation : animations) {
+                animation.apply(strip);
+                
+        }
     }
 }

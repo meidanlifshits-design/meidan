@@ -8,9 +8,9 @@ public class Main {
         long startTime = System.currentTimeMillis();
 
         LedController controller = new LedController(100);
-
-        controller.addAnimation(new GeneralAngelsAnimation(), 10.0);
-
+        BlinkingAnimation blink = new BlinkingAnimation(Color.MAGENTA);
+        Animation limitedBlink = new TimedAnimation(blink,8);
+        controller.addAnimation(limitedBlink);
         controller.play();
 
         long totalRuntime = System.currentTimeMillis() - startTime;
