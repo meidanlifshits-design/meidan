@@ -2,7 +2,7 @@ package ledsystem;
 
 import java.awt.Color;
 
-import ledsystem.animations.BlinkingAnimation; 
+import ledsystem.animations.BlinkingAnimation;
 import ledsystem.animations.SolidAnimation;
 import ledsystem.ledssim.LedController;
 
