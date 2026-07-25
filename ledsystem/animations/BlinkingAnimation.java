@@ -15,13 +15,18 @@ public class BlinkingAnimation implements Animation {
     }
     
     private boolean started = false;
-
+    
     @Override
     public void apply(LedStrip strip) {
+        if (activeColor==null) {
+            System.err.println("put something in color");
+            System.exit(1);
+        }
         if (!started) {
             stopWatch.start();
             started = true;
         }
+
 
         double elapsed = stopWatch.get();
         if ((int) (elapsed / 2.0) % 2 == 0) {
@@ -29,5 +34,6 @@ public class BlinkingAnimation implements Animation {
         } else {
             strip.setAll(Color.BLACK);
         }
+        strip.apply();
     }
 }

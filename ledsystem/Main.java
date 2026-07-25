@@ -2,8 +2,9 @@ package ledsystem;
 
 import java.awt.Color;
 
+import ledsystem.animations.Animation;
 import ledsystem.animations.BlinkingAnimation;
-import ledsystem.animations.SolidAnimation;
+import ledsystem.animations.TimedAnimation;
 import ledsystem.ledssim.LedController;
 
 public class Main {
@@ -11,9 +12,9 @@ public class Main {
         long startTime = System.currentTimeMillis();
 
         LedController controller = new LedController(100);
-
-        controller.addAnimation(new BlinkingAnimation(Color.MAGENTA), 5.0);
-
+        BlinkingAnimation blink = new BlinkingAnimation(Color.RED);
+        Animation limitedBlink = new TimedAnimation(blink, 8);
+        controller.addAnimation(limitedBlink);
         controller.play();
 
         long totalRuntime = System.currentTimeMillis() - startTime;

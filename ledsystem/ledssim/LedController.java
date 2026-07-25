@@ -1,9 +1,7 @@
 package ledsystem.ledssim;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-
 import ledsystem.animations.Animation;
 
 public class LedController {
@@ -11,11 +9,10 @@ public class LedController {
 
     private static class AnimationEntry {
         final Animation animation;
-        final double duration;
 
-        AnimationEntry(Animation animation, double duration) {
+        AnimationEntry(Animation animation) {
             this.animation = animation;
-            this.duration = duration;
+            
         }
     }
 
@@ -26,25 +23,14 @@ public class LedController {
         this.animations = new ArrayList<>();
     }
 
-    public void addAnimation(Animation animation, double duration) {
-        animations.add(new AnimationEntry(animation, duration));
-    }
-
     public void addAnimation(Animation animation) {
-        addAnimation(animation, 1.0); // 1-second default
+            animations.add(new AnimationEntry(animation));
     }
 
     public void play() {
         for (AnimationEntry entry : animations) {
-            ledsystem.utils.StopWatch sw = new ledsystem.utils.StopWatch();
-            sw.start();
-            while (sw.get() < entry.duration) {
                 entry.animation.apply(strip);
-                strip.apply();
-            }
+                
         }
-        
     }
-
-    
 }
