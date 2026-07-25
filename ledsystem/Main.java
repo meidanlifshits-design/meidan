@@ -12,8 +12,8 @@ public class Main {
         long startTime = System.currentTimeMillis();
 
         LedController controller = new LedController(100);
-        BlinkingAnimation blink = new BlinkingAnimation(Color.RED);
-        Animation limitedBlink = new TimedAnimation(blink, 8);
+        BlinkingAnimation blink = new BlinkingAnimation(Color.MAGENTA);
+        Animation limitedBlink = new TimedAnimation(blink,8);
         controller.addAnimation(limitedBlink);
         controller.play();
 

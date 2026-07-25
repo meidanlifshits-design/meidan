@@ -6,17 +6,10 @@ import ledsystem.animations.Animation;
 
 public class LedController {
     private final LedStrip strip;
+    
 
-    private static class AnimationEntry {
-        final Animation animation;
 
-        AnimationEntry(Animation animation) {
-            this.animation = animation;
-            
-        }
-    }
-
-    private final List<AnimationEntry> animations;
+    private final List<Animation> animations;
 
     public LedController(int stripLength) {
         this.strip = LedSim.createRows(stripLength);
@@ -24,12 +17,17 @@ public class LedController {
     }
 
     public void addAnimation(Animation animation) {
-            animations.add(new AnimationEntry(animation));
+        if (animation!=null){
+            animations.add(animation);
+        }
+        else{
+            throw new IllegalStateException("you have to put an animation to add");
+        }
     }
 
     public void play() {
-        for (AnimationEntry entry : animations) {
-                entry.animation.apply(strip);
+        for (Animation animation : animations) {
+                animation.apply(strip);
                 
         }
     }
