@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
+import ledsystem.animations.Animation;
+
 public class LedController {
     private final LedStrip strip;
     private final List<Animation> animations;
@@ -21,18 +23,8 @@ public class LedController {
         for (Animation animation : animations) {
             animation.apply(strip);
         }
-        strip.apply();
+        
     }
 
-    public void setAll(Color color) {
-        strip.setAll(color);
-    }
-
-    public void setRange(Color color, int start, int end) {
-        strip.setRange(color, start, end);
-    }
-
-    public void setLed(Color color, int index) {
-        strip.setLed(color, index);
-    }
+    
 }

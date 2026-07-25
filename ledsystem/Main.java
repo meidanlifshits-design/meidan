@@ -2,8 +2,9 @@ package ledsystem;
 
 import java.awt.Color;
 
+import ledsystem.animations.BlinkingAnimation;
+import ledsystem.animations.SolidAnimation;
 import ledsystem.ledssim.LedController;
-import ledsystem.ledssim.SolidAnimation;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,7 +14,7 @@ public class Main {
         LedController controller = new LedController(100);
 
         // Add an animation to the controller
-        controller.addAnimation(new SolidAnimation(Color.MAGENTA));
+        controller.addAnimation(new SolidAnimation(Color.BLUE));
         // Play the animation
         controller.play();
 
